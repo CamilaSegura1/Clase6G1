@@ -14,7 +14,7 @@ def main():
 
         if menu == 1:
             if servicio_hospitalario.verNumeroMascotas() >= 10:
-                print("No hay estapacio , vuelva despues..")
+                print("No hay estapacio, vuelva despues..")
                 continue
             historia = int(input("Ingrese # de la historia: "))
 
