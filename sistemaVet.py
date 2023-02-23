@@ -6,7 +6,7 @@ class Mascota:
         self.__tipo=" "
         self.__peso=0
         self.__fecha_ingreso=" "
-        self.__medicamento=""
+        self.__list.medicamento= []
 
     def verNombre(self):
         return self.__nombre
@@ -19,7 +19,7 @@ class Mascota:
     def verFecha(self):
         return self.__fecha_ingreso
     def ver_Medicamento(self):
-        return self.__medicamento 
+        return self.__list.medicamento 
             
     def asignarNombre(self,n):
         self.__nombre=n
@@ -32,7 +32,7 @@ class Mascota:
     def asignarFecha(self,f):
         self.__fecha_ingreso=f
     def asignarMedicamento(self,n):
-        self.__medicamento = n         
+        self.__list.medicamento = n         
 
 class sistemaV:
     def __init__(self):
@@ -69,7 +69,7 @@ class sistemaV:
         #busco la mascota y devuelvo el atributo solicitado
         for masc in self.__lista_mascotas:
             if historia == masc.verHistoria():
-                return masc.ver_Medicamento() 
+                return masc.ver_list.Medicamento() 
         return None
 
     def eliminarMascota(self, historia):
@@ -81,8 +81,20 @@ class sistemaV:
         return False
 
 
+class Medicamentos():
+    def __init__(self):
+        self.__dosis = 0
+        self.__nombreMed = ""
+    
+    def agregarDosis(self,dosis):
+        self.__dosis = dosis
+    def agregarNombreMed(self,nombre):
+        self.__nombreMed = nombre
 
-
+    def verDosis(self):
+        return self.__dosis
+    def verNombreMed(self):
+        return self.__nombreMed
 
 
 
