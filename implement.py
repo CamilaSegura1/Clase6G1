@@ -23,7 +23,9 @@ def main():
                 nombre=input("Ingrese el nombre de la mascota: ")
                 tipo=int(input("""Ingrese el tipo de mascota 
                               1. Felino 
-                              2. Canino): """))
+                              2. Canino
+                            
+                              Opcion: """))
                 peso=int(input("Ingrese el peso de la mascota: "))
                 fecha= datetime.datetime.now()
                 medicamento=input("Ingrese la cantidad de medicamento asignado: ")
@@ -43,14 +45,16 @@ def main():
                 mas.asignarTipo(tipo)
                 mas.asignarFecha(fecha)
                 mas.asignarMedicamento(medicamento)
-                r = servicio_hospitalario.ingresarMascota()
-                if r :
+                #r = servicio_hospitalario.ingresarMascota()
+                if tipo == 1 :
+                    servicio_hospitalario.ingresarFelino(mas)
                     print ("Se ingreso exitosamente la mascota..")
-                else:
-                    print ("No se ingreso la mascota.. ya esta en el sistema")
+                elif tipo == 2:
+                    servicio_hospitalario.ingresarCanino(mas)
+                    print ("Se ingreso exitosamente la mascota..")
 
-            else:
-                print("Ya existe una mascota con el numero de historia clínica ingresado.")
+                else:
+                    print("Ya existe una mascota con el numero de historia clínica ingresado.")
 
         elif menu == 2:
             q = int(input("Ingrese la historia clínica de la mascota: "))
