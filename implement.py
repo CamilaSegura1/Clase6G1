@@ -1,4 +1,5 @@
 from sistemaVet import *
+import datetime
 
 def main():
     servicio_hospitalario = sistemaV()
@@ -20,10 +21,21 @@ def main():
 
             if servicio_hospitalario.verificarExiste() == False:
                 nombre=input("Ingrese el nombre de la mascota: ")
-                tipo=input("Ingrese el tipo de mascota (felino o canino): ")
+                tipo=int(input("""Ingrese el tipo de mascota 
+                              1. Felino 
+                              2. Canino): """))
                 peso=int(input("Ingrese el peso de la mascota: "))
-                fecha=input("Ingrese la fecha de ingreso (dia/mes/año): ")
-                medicamento=input("Ingrese nombre del medicamento: ")
+                fecha= datetime.datetime.now()
+                medicamento=input("Ingrese la cantidad de medicamento asignado: ")
+                lista_med = []
+
+                for i in range(0,medicamento):
+                    nombre_med = input("Ingrese el nombre del medicamento: ")
+                    dosis = int(input("Ingrese la dosis asignado: "))
+                    medi = Medicamentos()
+                    medi.asignarDosis(dosis)
+                    medi.asignarNombre(nombre_med)
+                    lista_med.append(medi)
                 mas =  Mascota()
                 mas.asignarNombre(nombre)
                 mas.asignarHistoria(historia)
@@ -44,7 +56,7 @@ def main():
             q = int(input("Ingrese la historia clínica de la mascota: "))
             fecha = servicio_hospitalario.verFechaIngreso(q)
             if fecha != None:  
-                print("La fecha de ingreso de la mascota es: " + fecha)
+                print("La fecha de ingreso de la mascota es: " + fecha.strftime("%x"))
             else:
                 print("La historia clínica ingresada no corresponde con ninguna mascota en el sistema.") 
 

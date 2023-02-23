@@ -36,25 +36,36 @@ class Mascota:
 
 class sistemaV:
     def __init__(self):
-        self.__lista_mascotas = []    
+        self.__lista_canino = {}
+        self.__lista_felino = {}    
         # self.__lista_mascotas = {}    
 
+    
     def verificarExiste(self,historia):
-        for m in self.__lista_mascotas:
-            if historia == m.verHistoria():
-                return True
-        #solo luego de haber recorrido todo el ciclo se retorna False
-        return False
+        if historia in self.__lista_canino.keys():
+            print("Si esta en la base de datos")
+            return True
+        elif historia in self.__lista_felino.keys():
+            return True
+        else:
+            print("No esta")
+            return False
 
     def verNumeroMascotas(self):
-        return len(self.__lista_mascotas)  
+        return len(self.__lista_canino.keys())+len(self.__lista_felino.keys()) 
 
-    def ingresarMascota(self,mascota):
+    def ingresarCanino(self,mascota):
         if self.verificarExiste(mascota.verHistoria()):
             return False
         else:
-            self.__lista_mascotas.append(mascota) 
-            # self.__lista_mascotas[mascota.verHistoria()] = mascota
+            #self.__lista_mascotas.append(mascota) 
+            self.__lista_canino[mascota.verHistoria()] = mascota
+    def ingresarFelino(self,mascota):
+        if self.verificarExiste(mascota.verHistoria()):
+            return False
+        else:
+            #self.__lista_mascotas.append(mascota) 
+            self.__lista_felino[mascota.verHistoria()] = mascota
 
             return True
 
